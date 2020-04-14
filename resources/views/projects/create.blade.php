@@ -14,7 +14,7 @@
             <div class="field">
                 <label class="label" for="title">Project Description</label>
                 <div class="control">
-                    <textarea class="textarea {{ $errors->has('description')?'is-danger':''}}" name="description" placeholder ="Description"> </textarea>
+                    <textarea class="textarea {{ $errors->has('description')?'is-danger':''}}" name="description" placeholder ="Description" value="">{{old('description')}} </textarea>
                 </div>
             </div>    
 

@@ -28,6 +28,8 @@
                         <button type="submit" class="button is-link">Update Project</button>
                     </div>
         </div>
+
+        @include('projects.errors')
    
                             
     </form>

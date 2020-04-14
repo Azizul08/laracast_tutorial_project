@@ -3,6 +3,10 @@
 @section('content')
     <h1 class="title">{{ $projectdata->title}} </h1>
 
+    <!-- @can('update',$projectdata)
+    <a href="">Update</a>
+    @endcan -->
+
     <div class="content">
     	{{ $projectdata->description }}
     	 <p><a href="/projects/{{ $projectdata->id }}/edit">Edit</a></p>

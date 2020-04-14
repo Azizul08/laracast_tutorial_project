@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2020 at 06:46 PM
+-- Generation Time: Apr 14, 2020 at 07:25 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.26
 
@@ -42,7 +42,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2018_12_29_144116_create_projects_table', 1),
-(4, '2019_02_08_161745_create_tasks_table', 2);
+(4, '2020_04_04_133154_create_tasks_table', 1);
 
 -- --------------------------------------------------------
 
@@ -64,6 +64,7 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `projects` (
   `id` int(10) UNSIGNED NOT NULL,
+  `owner_id` int(10) UNSIGNED NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -74,14 +75,19 @@ CREATE TABLE `projects` (
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `title`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'ZZZ', 'WWW', '2019-02-08 07:19:07', '2020-04-04 08:00:45'),
-(4, 'azizul55', 'zxcvbnm55', '2019-02-08 08:53:42', '2020-04-04 00:19:22'),
-(6, 'World', 'Hello World', '2020-04-04 00:32:44', '2020-04-04 00:32:44'),
-(7, 'Bangladesh', 'Bangla', '2020-04-04 00:33:17', '2020-04-04 00:33:17'),
-(8, 'Good', 'Very Good', '2020-04-04 00:33:53', '2020-04-04 00:33:53'),
-(9, 'Why', 'Add', '2020-04-04 00:36:42', '2020-04-04 00:36:42'),
-(10, 'WEB', 'WWWWWWWWWWWWWWWWW', '2020-04-04 02:27:00', '2020-04-04 02:27:00');
+INSERT INTO `projects` (`id`, `owner_id`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Azizul', 'H', '2020-04-06 11:54:24', '2020-04-10 03:48:20'),
+(2, 1, 'Mr. Jabbari', 'Hello Jabbari', '2020-04-06 11:56:05', '2020-04-08 12:08:16'),
+(3, 2, 'Sagor', 'Hello Sagor', '2020-04-06 11:58:03', '2020-04-06 11:58:03'),
+(4, 2, 'ASD', 'ZZZZZZZZZZZZZZZ', '2020-04-06 12:15:09', '2020-04-06 12:15:09'),
+(5, 2, 'WWW', 'ZZZZZZZ', '2020-04-06 12:15:23', '2020-04-06 12:15:36'),
+(6, 1, 'Email Testing', 'How to send mail in the client account', '2020-04-10 05:42:05', '2020-04-10 05:42:05'),
+(7, 1, 'Email Testing', 'How to send mail in the client account', '2020-04-10 05:43:04', '2020-04-10 05:43:04'),
+(8, 1, 'Email Testing', 'How to send mail in the client account', '2020-04-10 05:44:21', '2020-04-10 05:44:21'),
+(9, 2, 'Safe Email Test', 'Hi ! We are happy to see you at Mailtrap!\r\n\r\nNow you have a set of tools for safe email testing for staging and development.', '2020-04-10 05:49:19', '2020-04-10 05:49:19'),
+(10, 2, 'Test', 'Set Mailtrap as an SMTP server for your application:\r\n\r\ngo to your first Inbox\r\ncopy the SMTP credentials (host, username, password, and the appropriate port)\r\nPaste them to your application code - see config examples for different environments in the integration section inside your inbox.', '2020-04-10 06:05:18', '2020-04-10 06:05:18'),
+(11, 2, 'Test', 'Set Mailtrap as an SMTP server for your application:\r\n\r\ngo to your first Inbox\r\ncopy the SMTP credentials (host, username, password, and the appropriate port)\r\nPaste them to your application code - see config examples for different environments in the integration section inside your inbox.', '2020-04-10 06:06:07', '2020-04-10 06:06:07'),
+(12, 2, 'Test', 'Set Mailtrap as an SMTP server for your application:\r\n\r\ngo to your first Inbox\r\ncopy the SMTP credentials (host, username, password, and the appropriate port)\r\nPaste them to your application code - see config examples for different environments in the integration section inside your inbox.', '2020-04-10 06:07:36', '2020-04-10 06:07:36');
 
 -- --------------------------------------------------------
 
@@ -103,14 +109,8 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`id`, `project_id`, `description`, `completed`, `created_at`, `updated_at`) VALUES
-(1, 1, 'bangladesh', 1, '2019-02-07 18:00:00', '2020-04-04 09:19:06'),
-(8, 1, 'dhaka', 0, '2019-01-09 18:00:00', '2020-04-04 09:04:57'),
-(9, 1, 'Great', 0, '2020-04-04 13:20:42', '2020-04-04 13:20:48'),
-(10, 1, 'New Task', 0, '2020-04-04 13:24:47', '2020-04-04 13:24:52'),
-(11, 1, 'VERY', 0, '2020-04-04 13:25:07', '2020-04-04 13:25:07'),
-(12, 1, 'NEW NEW', 0, '2020-04-04 13:29:27', '2020-04-04 13:29:35'),
-(13, 6, 'aaaaa', 1, '2020-04-04 13:32:44', '2020-04-04 13:32:58'),
-(14, 6, 'mmmm', 0, '2020-04-04 13:32:51', '2020-04-04 13:32:56');
+(1, 1, 'Welcome', 0, '2020-04-06 11:54:36', '2020-04-06 11:54:36'),
+(2, 2, 'Hi', 0, '2020-04-06 11:56:26', '2020-04-08 10:57:25');
 
 -- --------------------------------------------------------
 
@@ -128,6 +128,14 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Azizul', 'azizul@gmail.com', NULL, '$2y$10$fqOffT4ZQ7Bd5Aile0C79ujC7B0GL5JQinUEiMTNL9DHn33.H0Egm', '80RpgdAMZ8klqqWqY5Voi3QSAgFZovtINE0icaTGYuOE3iHQKumFQPap2Vmc', '2020-04-06 11:41:48', '2020-04-06 11:41:48'),
+(2, 'sagor', 'sagor@gmail.com', NULL, '$2y$10$PAw2l2PogIDzINur3vo4R.6tMRWNZjRgnNevXduaoLK7ddDeiya6S', 'X8TnGEbXF4pHXhvb5QHW7LXfuxvAsClDqG5XRqdjiC8xolxqorhk9T1ucU4A', '2020-04-06 11:57:25', '2020-04-06 11:57:25');
 
 --
 -- Indexes for dumped tables
@@ -149,7 +157,8 @@ ALTER TABLE `password_resets`
 -- Indexes for table `projects`
 --
 ALTER TABLE `projects`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `projects_owner_id_foreign` (`owner_id`);
 
 --
 -- Indexes for table `tasks`
@@ -178,19 +187,29 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `projects`
+--
+ALTER TABLE `projects`
+  ADD CONSTRAINT `projects_owner_id_foreign` FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
